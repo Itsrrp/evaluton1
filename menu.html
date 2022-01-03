@@ -52,14 +52,17 @@
            let cartbutton = document.createElement("button")
            cartbutton.innerText = "Add to cart"
            cartbutton.setAttribute("class", "cartbutton")
+        //    cartbutton.addEventListener("click", function() {
+        //        addToCart(item)
+        //    })
 
             div1.append(img, name, price, cartbutton)
             menu_div.append(div1)
         })
     }
 
-        document.querySelector("div1").addEventListener("submit", additem)
-        localStorage.setItem("div1", json.stringy)
-            
+        // document.querySelector("div1").addEventListener("submit", additem)
+        // localStorage.setItem("div1", json.stringy)
+        
 
 </script>
