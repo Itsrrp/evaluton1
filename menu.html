@@ -1,0 +1,65 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #menu {
+            display: grid;
+            grid-template-rows: auto auto auto;      
+            /* display: flex; */
+        }
+        .cartbutton {
+            width: 125px;
+            height: 40px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <button onclick="check_menu()">Checkmenu</button>
+    <div id="menu"></div>
+</body>
+</html>
+<script>
+    let menu_div = document.getElementById("menu")
+    async function check_menu() {
+        try {
+            let res = await fetch(`https://www.themealdb.com/api/json/v1/1/categories.php`)
+            let data = await res.json()
+            let stick = data.categories
+            console.log(data)
+            menu_user(stick)
+        } catch (err) {
+            console.log("error", err)
+        }
+    }
+
+    function menu_user(element) {
+        element.forEach(function (event) {
+            let div1 = document.createElement("div")
+
+            let img = document.createElement("img")
+            img.src = event.strCategoryThumb
+
+            let name = document.createElement("p")
+            name.innerText = event.strCategory
+
+            let price = document.createElement("p")
+            price.innerText = Math.random()
+
+           let cartbutton = document.createElement("button")
+           cartbutton.innerText = "Add to cart"
+           cartbutton.setAttribute("class", "cartbutton")
+
+            div1.append(img, name, price, cartbutton)
+            menu_div.append(div1)
+        })
+    }
+
+        document.querySelector("div1").addEventListener("submit", additem)
+        localStorage.setItem("div1", json.stringy)
+            
+
+</script>
